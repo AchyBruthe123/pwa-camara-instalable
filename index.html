@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="Captura de evidencia fotográfica con acceso consciente a cámara.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Inspección Visual PWA</title>
+</head>
+<body>
+  <main class="app">
+    <header class="cabecera">
+      <h1>Inspección Visual</h1>
+      <p class="subtitulo">Evidencia fotográfica con consentimiento consciente</p>
+      <button id="btn-instalar" class="boton boton-instalar" type="button" hidden>
+        Instalar aplicación
+      </button>
+      <p id="estado-pwa" class="estado-pwa" aria-live="polite"></p>
+    </header>
+
+    <section class="visor-seccion" aria-labelledby="titulo-visor">
+      <h2 id="titulo-visor" class="sr-only">Vista previa de la cámara</h2>
+      <video id="visor-camara" autoplay playsinline muted></video>
+      <p id="estado-camara" class="estado-camara" role="status" aria-live="polite">
+        Cámara apagada. Solicita acceso para comenzar.
+      </p>
+    </section>
+
+    <section class="controles" aria-label="Controles de cámara">
+      <button id="btn-preparar-camara" class="boton boton-primario" type="button">
+        Solicitar acceso a cámara
+      </button>
+      <button id="btn-alternar-camara" class="boton" type="button" hidden>
+        Cambiar a cámara frontal
+      </button>
+      <button id="btn-detener-camara" class="boton boton-peligro" type="button" hidden>
+        Apagar cámara
+      </button>
+    </section>
+
+    <div
+      id="aviso-permiso"
+      class="aviso"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="titulo-aviso"
+      aria-describedby="texto-aviso"
+      hidden
+    >
+      <div class="aviso-contenido">
+        <h2 id="titulo-aviso">Antes de activar la cámara</h2>
+        <p id="texto-aviso">
+          Esta aplicación usa la cámara únicamente para mostrar la vista previa y capturar
+          evidencia de inspección. El permiso nativo del navegador aparecerá
+          <strong>después</strong> de que confirmes este aviso: no encendemos el sensor sin tu
+          autorización. Podrás alternar entre la lente trasera y la frontal, y apagarla cuando
+          quieras.
+        </p>
+        <div class="aviso-acciones">
+          <button id="btn-cancelar-permiso" class="boton" type="button">Cancelar</button>
+          <button id="btn-confirmar-permiso" class="boton boton-primario" type="button">
+            Aceptar y encender cámara
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="./app.js"></script>
+  <script src="./pwa.js"></script>
+</body>
+</html>
