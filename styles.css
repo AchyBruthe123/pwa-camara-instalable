@@ -192,6 +192,14 @@ body {
   flex: 1 1 10rem;
 }
 
+.credito {
+  margin-top: 1.75rem;
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
